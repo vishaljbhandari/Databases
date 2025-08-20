@@ -1,0 +1,40 @@
+Oracle Base ->  C:\Oracle19c\
+Oracle Database ->  C:\Oracle19c\oradata
+Windows User/password -> oracle/password
+
+Oracle Database Name - orcl19
+Password -> password
+
+pluggable database name -> orclpdb
+
+Oracle Enterprise Manager Database Express URL: https://localhost:5500/em
+
+
+----------------------------------------------
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Dec 13 03:08:02 2023
+Version 19.3.0.0.0
+
+Copyright (c) 1982, 2019, Oracle.  All rights reserved.
+Enter user-name: sys as sysdba
+Enter password:password
+Connected to:
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.3.0.0.0
+
+SQL>
+
+
+--------------------------------------------------
+
+Database/username	password(all are same)
+c##learn_reactjs
+c##learn_typescript
+c##learn_oracle
+c##learn_java
+c##learn_go
+c##learn_cpp
+c##learn_c
+c##fameo
+c##learn_csharp
+
+SQL> SELECT username FROM all_users WHERE username LIKE 'c##financial' ORDER BY username;
