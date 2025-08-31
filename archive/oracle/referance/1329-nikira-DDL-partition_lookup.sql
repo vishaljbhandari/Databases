@@ -1,0 +1,15 @@
+--@configure_input@
+spool partition_lookup_DDL.log
+
+SET FEEDBACK OFF ;
+set serveroutput off ;
+
+CREATE TABLE PARTITION_LOOKUP
+(
+ TABLE_NAME VARCHAR2(255),
+ PARTITION_NAME VARCHAR2(255),
+ DAYS_OF_YEAR VARCHAR2(255)
+);
+
+COMMIT ;
+

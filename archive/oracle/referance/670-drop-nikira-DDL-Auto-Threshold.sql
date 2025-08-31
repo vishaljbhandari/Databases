@@ -1,0 +1,4 @@
+drop sequence AUTO_THRESHOLDS_SEQ ;
+drop sequence ARCHIVED_THRESHOLDS_SEQ ;
+drop table AUTO_THRESHOLDS ;
+drop table ARCHIVED_THRESHOLDS ;

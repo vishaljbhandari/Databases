@@ -1,0 +1,12 @@
+
+SPOOL nikira-DDL-db-demo-account-ACC_ID_INC.log
+SET FEEDBACK OFF ;
+set serveroutput off ;
+
+
+
+
+CREATE SEQUENCE ACCOUNT_ID INCREMENT BY 1 START WITH 1025 NOMAXVALUE NOMINVALUE NOCYCLE CACHE 20 ORDER;
+commit;
+spool off
+

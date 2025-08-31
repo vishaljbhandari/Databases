@@ -1,0 +1,11 @@
+insert into aggregation_types (ID, DESCRIPTION, RECORD_CONFIG_IDS, DURATION_TYPE_IDS) values (44, 'OtherParty Number', null, '-1,-2,-3,-4,901') ;
+insert into reference_types(id, description, record_config_id) values(24, 'OtherParty Number', null) ;
+insert into reference_types_maps (id, aggregation_type, reference_type, reference_value_category_id, reference_category_id) values (reference_types_maps_seq.nextval, 44, 24, 44, 0) ;
+insert into alarm_status_action_maps (id, status, analyst_action_id, reference_type) values(42, 2, 33, 24) ;
+insert into alarm_status_action_maps (id, status, analyst_action_id, reference_type) values(43, 2, 34, 24) ;
+insert into alarm_status_action_maps (id, status, analyst_action_id, reference_type) values(44, 4, 34, 24) ;
+insert into counter_maps(id, aggregation_type, record_config_id, function_id, counter_type, category) select counter_maps_seq.nextval, 44, 1, function_id, 201, 'PROFILE_FIELD' from counter_maps where aggregation_type = 7 and record_config_id = 1 and counter_type = 1 and category = 'REGULAR' ;
+insert into counter_manager_mappings (counter_detail_id, counter_type_id, aggregation_type_id, record_config_id) values (502, 202, 44, 201);
+insert into counter_manager_mappings (counter_detail_id, counter_type_id, aggregation_type_id, record_config_id) values (501, 201, 44, 1);
+insert into counter_manager_mappings (counter_detail_id, counter_type_id, aggregation_type_id, record_config_id) values (503, 203, 44, 1);
+update field_categories set category = 'HOTLIST ' || category where name = 'OtherParty Number' ;

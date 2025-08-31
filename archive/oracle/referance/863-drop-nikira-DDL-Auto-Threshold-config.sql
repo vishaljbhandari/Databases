@@ -1,0 +1,1 @@
+drop table ATE_COUNTER_CONFIGS ;

@@ -1,0 +1,130 @@
+spool nikira-DML-new-record-config-gsm.log
+set feedback off ;
+set serveroutput off ;
+
+-- Record Config
+
+insert into record_configs (id, tname, description, cacheable, key, is_visible, delimeter, category, is_partitioned) values(101,'ASN_RECORD_INFO_V','ASN CDR',1,'PHONE_NUMBER',1, ',', '', 0) ;
+
+
+-- Record Views Configs
+insert into record_view_configs (id, name, record_config_id, where_clause, order_by, is_pagination_enabled, is_visible, is_primary_view, is_logging_enabled) values(122,'ASN CDR',101,'','ID DESC', 1, 1, 1, 1) ;
+
+
+
+-- Dammy RC & RV configs entries - To support IMEI aggregation support in Statistical Rules.
+
+insert into record_configs (id, tname, description, cacheable, key, is_visible, delimeter, category, is_partitioned) values(201,' ','OtherParty Number',0,'',1, ',', 'RULE_TAGS STATS_RULE_ENTITY_TYPE', 0) ;
+insert into record_view_configs (id, name, record_config_id, where_clause, order_by, is_pagination_enabled, is_visible, is_primary_view, is_logging_enabled) values(201,' ',201,'','', 0, 0, 1, 0) ;
+
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 201, 'ID', 'ID', 1, 1, 1, 0, '', '', 40, null, 0,0,2, '') ;
+
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 201, 'IMEI', 'IMEI', 3, 2, 3, 0, '', '', 40, null, 0,0,2, '') ;
+
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 201, 'TIME', 'TIME', 13, 3, 4, 0, '', '', 40, null, 0,0,2, '') ;
+
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 201, 'Network Id', 'NETWORK_ID', 5, 4, 8, 0, '', '', 40, null, 0,0,2, '') ;
+
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 201, 'OtherPartyNumber', 'OTHER_PARTY_NUMBER', 44, 5, 3, 0, '', '', 40, null, 0,0,2, '') ;
+
+insert into field_record_config_maps(id, field_category_id, record_config_id, field_association) values (field_record_config_map_seq.nextval,  1, 201, '1') ;
+
+insert into field_record_config_maps(id, field_category_id, record_config_id, field_association) values (field_record_config_map_seq.nextval,  3, 201, '3') ;
+
+insert into field_record_config_maps(id, field_category_id, record_config_id, field_association) values (field_record_config_map_seq.nextval,  13, 201, '13') ;
+
+insert into field_record_config_maps(id, field_category_id, record_config_id, field_association) values (field_record_config_map_seq.nextval,  5, 201, '5') ;
+
+insert into field_record_config_maps(id, field_category_id, record_config_id, field_association) values (field_record_config_map_seq.nextval,  44, 201, '44') ;
+
+
+insert into record_configs (id, tname, description, cacheable, key, is_visible, delimeter, category, is_partitioned) values(202,' ','IMEI',0,'',1, ',', 'RULE_TAGS STATS_RULE_ENTITY_TYPE', 0) ;
+insert into record_view_configs (id, name, record_config_id, where_clause, order_by, is_pagination_enabled, is_visible, is_primary_view, is_logging_enabled) values(202,' ',202,'','', 0, 0, 1, 0) ;
+
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 202, 'ID', 'ID', 1, 1, 1, 0, '', '', 40, null, 0,0,2, '') ;
+
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 202, 'IMEI', 'IMEI', 3, 2, 3, 0, '', '', 40, null, 0,0,2, '') ;
+
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 202, 'TIME', 'TIME', 13, 3, 4, 0, '', '', 40, null, 0,0,2, '') ;
+
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 202, 'Network Id', 'NETWORK_ID', 5, 4, 8, 0, '', '', 40, null, 0,0,2, '') ;
+
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 202, 'OtherPartyNumber', 'OTHER_PARTY_NUMBER', 44, 5, 3, 0, '', '', 40, null, 0,0,2, '') ;
+
+insert into field_record_config_maps(id, field_category_id, record_config_id, field_association) values (field_record_config_map_seq.nextval,  1, 202, '1') ;
+
+insert into field_record_config_maps(id, field_category_id, record_config_id, field_association) values (field_record_config_map_seq.nextval,  3, 202, '3') ;
+
+insert into field_record_config_maps(id, field_category_id, record_config_id, field_association) values (field_record_config_map_seq.nextval,  13, 202, '13') ;
+
+insert into field_record_config_maps(id, field_category_id, record_config_id, field_association) values (field_record_config_map_seq.nextval,  5, 202, '5') ;
+
+insert into field_record_config_maps(id, field_category_id, record_config_id, field_association) values (field_record_config_map_seq.nextval,  44, 202, '44') ;
+
+
+
+--- Field Configs
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Receive Time', '', 1, 1,4,0 , '', '', 20, null, 0,0,'', '') ;
+---- Entries for ASN_RECORD_INFO --- ASN CDR Records ---
+
+
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values  ( field_configs_seq.nextval, 101, 'Network', 'NETWORK_ID', 2, 2,1, 0, '', '', 20, 10, (select decode(count(*), 1,0,1) from networks),(select decode(count(*), 1,0,1) from networks),'', '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Caller Number', 'CALLER_NUMBER', 3, 3,3, 1, '', '', 40, null, 1,1,1, '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Called Number', 'CALLED_NUMBER', 4, 4,3, 1, '', '', 40, null, 1,1,1, '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Forwarded Number', 'FORWARDED_NUMBER', 5, 5,3,0 , '', '', 40, null, 1,1,1, '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Record Type', 'RECORD_TYPE', 6, 6,1, 0, '', '', 20, 1, 1,1,'', '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Duration', 'DURATION', 7, 7,1, 0, 'GR CR', '', 20, 9, 1,1,'', '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function, format)  values (field_configs_seq.nextval, 101, 'Time Stamp', 'TIME_STAMP', 8, 8,4, 0, 'GR CR', '',  1,null, 1,1,'', '', 'yyyy/mm/dd hh24:mi:ss') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'IMEI', 'EQUIPMENT_ID', 9, 9,3, 0, '', '', 40, null, 1,1,2, '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'IMSI', 'IMSI_NUMBER',10,10,3, 0, '', '', 40, null, 1,1,3, '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Geographic Position', 'GEOGRAPHIC_POSITION',11,11,3, 1, '', '', 32, null, 1,1,4, '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Call Type', 'CALL_TYPE',12,12,1, 0, '', '', 20, 2, 1,1,'', '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Subscriber ID', 'SUBSCRIBER_ID',13,13,8, 0, '', '', 20, null, 0,0,'', '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Value', 'VALUE',14,14,2, 0, 'GR CR', '', 16, null, 1,1,'', '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'CDR Type', 'CDR_TYPE',15,15,1, 0, '', '', 20, 3, 1,1,'', '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Service Type', 'SERVICE_TYPE',16,16,1, 0, '', '', 20, 4, 1,1,'', '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'CDR Category', 'CDR_CATEGORY',17,17,1, 0, '', '', 20, 5, 1,1,'', '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Is Complete', 'IS_COMPLETE',18,18,6, 0, '', '', 1, 7, 1,1,'', '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Co-Related Field', '',19,19,3, 0, '', '', 20, 1, 0,0,'', '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Is Attempted', 'IS_ATTEMPTED',20,20,6, 0, '', '', 1, 6, 1,1,'', '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Service', 'SERVICE',21,21,1, 0, '', '', 20, 35, 1,1,13, '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Phone Number' , 'PHONE_NUMBER',22,22,3, 1, '', '', 40, null, 1,1,1, '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'CDR ID', 'ID', 23, 0, 8, 0, '', '', 20, null,0,0,null, '2') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Day of Year', 'DAY_OF_YEAR', 24, 0, 1, 0, '', '', 20, null, 0,0,null, '1') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'GMTTime Stamp', '', 25, 0,8, 0, '', '',  20,null, 0,0,'', '9') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'OtherPartyNumber', '', 26, 0,3, 0, '', '',  40,null, 0,0,1, '11') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Cellsite ID', '', 27, 0,8, 0, '', '',  20,null, 0,0,'', '10') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Hour of Day', 'HOUR_OF_DAY', 28, 0,1, 0, '', '',  20,null, 0,0,'', '12') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'Other Party Country Code', 'OTHER_PARTY_COUNTRY_CODE', 29, 0,3, 0, '', '',  20,null, 0,0,'', '22') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function)  values (field_configs_seq.nextval, 101, 'VPMN', 'VPMN', 30, 23, 3, 1, '', '',  40,null, 1, 1, 17, '') ;
+insert into field_configs (id, record_config_id, name, database_field, field_id, position, data_type, is_expandable, ds_category, query_field, width, translation_id, is_visible, is_filter, reg_exp_id, derivative_function, format)  values (field_configs_seq.nextval, 101, 'Current Time', '', 31, 0,4, 0, '', '',  1,null, 0,0,'', '32', 'yyyy/mm/dd hh24:mi:ss') ;
+
+insert into field_configs(id,record_config_id,name,database_field,position,is_expandable,is_visible,ds_category,data_type,format,field_id,query_field,translation_id,is_filter,width,reg_exp_id,associated_field,derivative_function) values (field_configs_seq.nextval, 101, 'Is Fraudulent Call', 'SUBSCRIBER_TYPE', 0, 0, 1, 'GR CR', 1, '', 32, '', 8, 1, 1, null, null, '') ;
+
+--------------------------Field Configs Additionals---------------------------------------------------
+insert into FIELD_CONFIGS_ADDITIONALS(ID,FIELD_ID,RECORD_CONFIG_ID,CONFIG_KEY,VALUE) values (FIELD_CONFIGS_ADDITIONALS_SEQ.nextval,14,101,'IS_CURRENCY',1);
+ 
+--Field Record Config Maps
+
+insert into field_record_config_maps(id, field_category_id, record_config_id, field_association) values (field_record_config_map_seq.nextval,  5, 101, '2') ;
+
+insert into expandable_field_maps(id, name, source_view_id, source_key, dest_view_id, dest_key, is_new_view, dest_key_type, category) values (260, 'ASN CDR',36, 'PHONE_NUMBER', 122, 'PHONE_NUMBER', 1, 2, 'RECORD_VIEW');
+
+insert into expandable_field_maps(id, name, source_view_id, source_key, dest_view_id, dest_key, is_new_view, dest_key_type, category) values (261, 'ASN CDR',41, 'PHONE_NUMBER', 122, 'PHONE_NUMBER', 1, 2, 'RECORD_VIEW');
+
+insert into expandable_field_maps(id, name, source_view_id, source_key, dest_view_id, dest_key, is_new_view, dest_key_type, category) values (262, 'ASN CDR',42, 'PHONE_NUMBER', 122, 'PHONE_NUMBER', 1, 2, 'RECORD_VIEW');
+
+insert into expandable_field_maps (id, name, source_view_id, source_key, dest_view_id, dest_key, dest_key_type, is_new_view, category, data_record_type) values ( 263, 'Subscriber Information', 36, 'PHONE_NUMBER', 102, 'PHONE_NUMBER', 2, 0, 'RECORD_VIEW' , 0 ) ;
+
+insert into expandable_field_maps (id, name, source_view_id, source_key, dest_view_id, dest_key, dest_key_type, is_new_view, category, data_record_type) values ( 264, 'Subscriber Information', 41, 'PHONE_NUMBER', 102, 'PHONE_NUMBER', 2, 0, 'RECORD_VIEW' , 0 ) ;
+
+insert into expandable_field_maps (id, name, source_view_id, source_key, dest_view_id, dest_key, dest_key_type, is_new_view, category, data_record_type) values ( 265, 'Subscriber Information', 42, 'PHONE_NUMBER', 102, 'PHONE_NUMBER', 2, 0, 'RECORD_VIEW' , 0 ) ;
+
+insert into expandable_field_maps (id, name, source_view_id, source_key, dest_view_id, dest_key, dest_key_type, is_new_view, category, data_record_type) values ( 266, 'Subscriber Information', 122, 'CALLER_NUMBER', 102, 'PHONE_NUMBER', 2, 0, 'RECORD_VIEW' , 0 ) ;
+
+insert into expandable_field_maps (id, name, source_view_id, source_key, dest_view_id, dest_key, dest_key_type, is_new_view, category, data_record_type) values ( 267, 'Subscriber Information', 122, 'CALLED_NUMBER', 102, 'PHONE_NUMBER', 2, 0, 'RECORD_VIEW' , 0 ) ;
+
+insert into expandable_field_maps (id, name, source_view_id, source_key, dest_view_id, dest_key, dest_key_type, is_new_view, category, data_record_type) values ( 268, 'Account Information', 102, 'ACCOUNT_NAME', 101, 'ACCOUNT_NAME', 2, 0, 'RECORD_VIEW' , 0 ) ;
+
+commit ;
+

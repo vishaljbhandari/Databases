@@ -1,0 +1,71 @@
+spool nikira-DML-control-panel.sql.log
+set feedback off;
+set serveroutput off ;
+
+--- ROC Control Panel entries
+insert into configurations(id, config_key, value) values (configurations_seq.nextval, 'ROC_CONTROL_PANEL.COLLECT_INTERVAL', '600') ;
+insert into configurations(id, config_key, value) values (configurations_seq.nextval, 'ROC_CONTROL_PANEL.COOKIE_FILE', '/tmp/roc_control_panel_cookiefile') ;
+insert into configurations(id, config_key, value) values (configurations_seq.nextval, 'ROC_CONTROL_PANEL.URL', 'http://127.0.0.1:8080/ControlPanelWS/services/updateCheck/') ;
+insert into configurations(id, config_key, value) values (configurations_seq.nextval, 'ROC_CONTROL_PANEL.IS_ENABLED','0') ;
+
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (1, 'AG_TOTAL_ALARMS_GENERATED', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (2, 'AG_TOTAL_ALERTS_GENERATED', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (3, 'AG_BREACH_AGGREGATIONVALUE_MAX_REPEATCOUNT', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (4, 'AG_ALERT_GENERATED_PER_AGGRTYPE', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (5, 'AG_TOTAL_ALARMGENERATION_REQUEST_PER_AGGTYPE', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (6, 'AG_TOTAL_ALARMGENERATION_REQUEST_PER_RULE', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (7, 'AG_FAILED_ALARMGENERATION_PER_AGGTYPE', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (8, 'AG_TOTAL_NEW_ALARMS_GENERATED', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (9, 'AG_TOTAL_NEW_ALERTS_GENERATED_FOR_RULE_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (10, 'AG_TOTAL_NEW_ALERTS_GENERATED_FOR_STATISTICAL_RULE_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (11, 'AG_TOTAL_NEW_ALERTS_GENERATED_FOR_GRANULAR_RULE_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (12, 'AG_TOTAL_NEW_ALERTS_GENERATED_FOR_SMART_PATTERN_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (13, 'AG_TOTAL_NEW_ALERTS_GENERATED_FOR_FP_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (14, 'AG_TOTAL_NEW_ALERTS_GENERATED_FOR_PRECHECK_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (15, 'AG_TOTAL_NEW_ALERTS_GENERATED_FOR_RTF_ALERT', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (16, 'AG_TOTAL_NEW_ALERTS_GENERATED_FOR_RTF_PRECHECK_ALERT', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (17, 'AG_TOTAL_UPDATED_ALERTS_FOR_RULE_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (18, 'AG_TOTAL_UPDATED_ALERTS_FOR_STATISTICAL_RULE_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (19, 'AG_TOTAL_UPDATED_ALERTS_FOR_GRANULAR_RULE_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (20, 'AG_TOTAL_UPDATED_ALERTS_FOR_SMART_PATTERN_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (21, 'AG_TOTAL_UPDATED_ALERTS_FOR_FP_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (22, 'AG_TOTAL_UPDATED_ALERTS_FOR_PRECHECK_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (23, 'AG_TOTAL_UPDATED_ALERTS_FOR_RTF_ALERT', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (24, 'AG_TOTAL_UPDATED_ALERTS_FOR_RTF_PRECHECK_ALERT', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (25, 'AG_TOTAL_IGNORED_ALERTS_FOR_RULE_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (26, 'AG_TOTAL_IGNORED_ALERTS_FOR_STATISTICAL_RULE_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (27, 'AG_TOTAL_IGNORED_ALERTS_FOR_GRANULAR_RULE_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (28, 'AG_TOTAL_IGNORED_ALERTS_FOR_SMART_PATTERN_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (29, 'AG_TOTAL_IGNORED_ALERTS_FOR_FP_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (30, 'AG_TOTAL_IGNORED_ALERTS_FOR_PRECHECK_ALARM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (31, 'AG_TOTAL_IGNORED_ALERTS_FOR_RTF_ALERT', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (32, 'AG_TOTAL_IGNORED_ALERTS_FOR_RTF_PRECHECK_ALERT', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (33, 'AG_TOTAL_FAILED_ALERTS', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (34, 'AG_TOTAL_INSERTION_TIME_FOR_ALERT_CDR_IN_SECONDS', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (35, 'AG_TOTAL_INSERTED_RECORDS_INTO_ALERT_CDR', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (36, 'AG_MAX_INSERTION_TIME_FOR_ALERT_CDR_IN_SECONDS', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (37, 'AG_TOTAL_INSERTION_TIME_FOR_RTF_ALERT_CDR_IN_SECONDS', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (38, 'AG_TOTAL_INSERTED_RECORDS_INTO_RTF_ALERT_CDR', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (39, 'AG_MAX_INSERTION_TIME_FOR_RTF_ALERT_CDR_IN_SECONDS', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (40, 'AG_TOTAL_INSERTED_RECORDS_INTO_MAP_FOR_SRS', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (41, 'AG_TOTAL_INSERTION_TIME_FOR_MAP_FOR_SRS_IN_SECONDS', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (42, 'AG_MAX_INSERTION_TIME_FOR_MAP_FOR_SRS_IN_SECONDS', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (43, 'AG_TOTAL_INSERTED_RECORDS_INTO_OBSERVATION_SUMMARY_RECORD', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (44, 'AG_MAX_TIME_FOR_CALCULATING_ALARM_VALUE_AND_RECORDCOUNT_IN_SECONDS', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (45, 'AG_TOTAL_SMS_NOTIFICATIONS', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (46, 'AG_TOTAL_EMAIL_NOTIFICATIONS ', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (47, 'RD_RECORDS_PROCESSED_PER_DATASTREAM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (48, 'RD_FILES_REJECTED_DUE_TO_INVALID_HEADER', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (49, 'RD_RECORDS_REJECTED_DUE_TO_FIELD_LENGTH_VALIDATION', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (50, 'RD_RECORDS_REJECTED_DUE_TO_RECORD_TYPE_VALIDATION', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (51, 'RD_RECORDS_REJECTED_DUE_TO_LICENSE_LIMIT_CHECK_PER_STREAM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (52, 'RD_RECORDS_REJECTED_DUE_TO_LICENSE_EXPIERY_DATE_PER_STREAM', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (53, 'RD_RECORDS_REJECTED_FOR_RULE', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (54, 'RD_AVG_THROUGHPUT_PER_FILE', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (55, 'RD_MIN_THROUGHPUT_PER_FILE', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (56, 'RD_MAX_THROUGHPUT_PER_FILE', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+insert into CONTROL_PANEL_METRIC_INFO (id, key_name, category, group_info, tag_info,trigger_info) values (57, 'RD_NO_OF_FILES_PROCESSED', 'CAT', 'G1:N1', 'T1','TH:1000') ;
+
+spool off ;
+commit ;
+

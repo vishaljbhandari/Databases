@@ -1,0 +1,10 @@
+spool nikira-DDL-db-demo-subscriber-preveasupport-file4.log
+set feedback off ;
+set serveroutput off ;
+
+CREATE INDEX IX_ARCH_SUBSCRIBER_PH_NU ON ARCHIVED_SUBSCRIBER("PHONE_NUMBER");
+CREATE INDEX IX_ARCH_SUB_ACCOUNT_NAME ON ARCHIVED_SUBSCRIBER("ACCOUNT_NAME");
+CREATE INDEX IX_ARCH_SUB_ID ON ARCHIVED_SUBSCRIBER("ID");
+    
+commit ;
+spool off

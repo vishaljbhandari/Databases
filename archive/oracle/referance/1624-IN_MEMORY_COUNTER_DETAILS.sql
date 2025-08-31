@@ -1,0 +1,9 @@
+spool IN_MEMORY_COUNTER_DETAILS.log
+
+
+
+---------------------------insert statements ---------------
+insert into IN_MEMORY_COUNTER_DETAILS(pr_file_path,delta_file_path,max_sender_thread_count,pr_hash_bucket_size,cache_dump_destination,cleanup_interval,shm_enabled,counter_category,id,max_receiver_thread_sync,batch_flush_interval,description,max_receiver_thread_async,number_of_partitions_per_slave,counter_instance_id,retention_file_count,number_of_slaves,vcache_cleanup_interval,delta_read_buffer_size,compress_memory,delta_read_ahead_count,disconnect_key_fetch_size,batch_count,cache_sweep_interval) values ('@commonmountpoint@/InMemory/ProfileElements/SubscriberUID/ParticipatedRecords','@commonmountpoint@/InMemory/ProfileElements/SubscriberUID/cache_delta','1','7','@commonmountpoint@/InMemory/ProfileElements/SubscriberUID/cache_dump','999999','0','5','1045','5','0','Profile In Memory offline - Subscriber UID','5','8','0','-1','1','0','80000','1','10000','100','0','1000000000');
+---------------------------insert statements ---------------
+insert into IN_MEMORY_COUNTER_DETAILS(pr_file_path,delta_file_path,max_sender_thread_count,pr_hash_bucket_size,cache_dump_destination,cleanup_interval,shm_enabled,counter_category,id,max_receiver_thread_sync,batch_flush_interval,description,max_receiver_thread_async,number_of_partitions_per_slave,counter_instance_id,retention_file_count,number_of_slaves,vcache_cleanup_interval,delta_read_buffer_size,compress_memory,delta_read_ahead_count,disconnect_key_fetch_size,batch_count,cache_sweep_interval) values ('@commonmountpoint@/InMemory/ProfileElements/SubscriberUID/ParticipatedRecords','@commonmountpoint@/InMemory/ProfileElements/SubscriberUID/delta','1','7','@commonmountpoint@/InMemory/ProfileElements/SubscriberUID/dump','999999','0','4','1044','5','600','Profile In Memory - Subscriber UID','5','2','0','-1','4','0','134','1','10000','100','100','600');
+spool off ;

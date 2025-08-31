@@ -1,0 +1,136 @@
+
+CREATE TABLE NIK_TEMP_GPRS_CDR (
+    ID                          NUMBER(20,0)    NOT NULL,
+    NETWORK_ID                  NUMBER(20,0)    NOT NULL,
+    RECORD_TYPE                 NUMBER(20,0)    NOT NULL,
+    TIME_STAMP                  DATE            NOT NULL,
+    DURATION                    NUMBER(20,0)    NOT NULL,
+    PHONE_NUMBER                VARCHAR2(32)    NOT NULL,
+    IMSI_NUMBER                 VARCHAR2(32),
+    IMEI_NUMBER                 VARCHAR2(32),
+    GEOGRAPHIC_POSITION         VARCHAR2(32),
+    CDR_TYPE                    NUMBER(20,0)    NOT NULL,
+    SERVICE_TYPE                NUMBER(20,0)    NOT NULL,
+    PDP_TYPE                    VARCHAR2(32),
+    SERVED_PDP_ADDRESS          VARCHAR2(46),
+    UPLOAD_DATA_VOLUME          NUMBER(20,6)    NOT NULL,
+    DOWNLOAD_DATA_VOLUME        NUMBER(20,6)    NOT NULL,
+    SERVICE                     NUMBER(20,0)    DEFAULT 2047,
+    QOS_REQUESTED               NUMBER(20,0)    NOT NULL,
+    QOS_NEGOTIATED              NUMBER(20,0)    NOT NULL,
+    VALUE                       NUMBER(16,6)    NOT NULL,
+    ACCESS_POINT_NAME           VARCHAR2(64),
+    SUBSCRIBER_ID               NUMBER(20,0)    NOT NULL,
+    DAY_OF_YEAR                 NUMBER(20,0),
+    CAUSE_FOR_SESSION_CLOSING   NUMBER(2,0),
+    SESSION_STATUS              NUMBER(2,0),
+    CHARGING_ID                 VARCHAR2(26)     NOT NULL,
+    ANI                         VARCHAR2(32),
+    HOUR_OF_DAY                 NUMBER(20,0) DEFAULT 0,
+    VPMN                VARCHAR2(40)
+ );
+
+
+
+CREATE TABLE NIK_MERGE_TEMP
+(
+ BAND_ID                     NUMBER(5),
+ NETWORK_ID                  NUMBER(5),
+ PHONE_NUMBER                VARCHAR2(40),
+ CALL_TYPE                   NUMBER(5),
+ RECORD_TYPE                 NUMBER(5),
+ CDR_TYPE                    NUMBER(20),
+ SUBSCRIBER_ID               NUMBER(20),
+ TOTAL_VALUE                 NUMBER(16,6),
+ TOTAL_DURATION              NUMBER(10),
+ TOTAL_COUNT                 NUMBER(10),
+ VPMN                        VARCHAR2(10)
+) NOLOGGING PARALLEL 4 ;
+
+
+CREATE TABLE NIK_MISSMATCH_TEMP
+(
+ SUBSCRIBER_ID               NUMBER(20),
+ NETWORK_ID                  NUMBER(20),
+ PHONE_NUMBER                VARCHAR2(40),
+ IMSI_NUMBER                 VARCHAR2(40),
+ EQUIPMENT_ID                VARCHAR2(40)
+) NOLOGGING PARALLEL 4 ;
+
+
+CREATE SEQUENCE NIK_HOTLIST_DEST_SUMMARY_SEQ INCREMENT BY 1 START WITH 1024 NOMAXVALUE MINVALUE 1024 NOCYCLE;
+
+CREATE TABLE NIK_HOTLIST_TEMP (
+ PHONE_NUMBER         VARCHAR2(255) NOT NULL,
+ SUBSCRIBER_ID        NUMBER(10) NOT NULL,
+ NETWORK_ID           NUMBER(10) NOT NULL ,
+ VPMN                 VARCHAR2(255) NOT NULL,
+ CALL_TYPE            NUMBER(10) NOT NULL,
+ CDR_TYPE             NUMBER(10) NOT NULL,
+ TOTAL_VALUE          NUMBER(16,6) NOT NULL,
+ TOTAL_DURATION       NUMBER(10) NOT NULL,
+ TOTAL_COUNT          NUMBER(10) NOT NULL ) ;
+
+CREATE SEQUENCE nik_vpmn_temp_seq INCREMENT BY 1 START WITH 1 NOMAXVALUE MINVALUE 1 NOCYCLE CACHE 20 ORDER ;
+
+CREATE TABLE nik_id_subscriber (
+	id number	);
+
+CREATE TABLE NIK_MCN_TEMP
+(
+ SUBSCRIBER_ID               NUMBER(20),
+ PHONE_NUMBER                VARCHAR2(40),
+ CALLED_NUMBER               VARCHAR2(40),
+ NETWORK_ID                  NUMBER(20),
+ TIME_STAMP                  DATE,
+ ACCOUNT_NAME                VARCHAR2(40),
+ SUB_NAME                    VARCHAR2(500),
+ CONTACT_PHONE_NUMBER        VARCHAR2(40),
+ SUBSCRIBER_DOA              DATE,
+ MCN1                        VARCHAR2(40),
+ MCN2                        VARCHAR2(40)
+) NOLOGGING PARALLEL 4 ;
+
+CREATE TABLE NIK_ASN_TEMP_CDR(
+       NETWORK_ID              NUMBER(20,0)    NOT NULL,
+       CALLER_NUMBER           VARCHAR2(80),
+       CALLED_NUMBER           VARCHAR2(80)    NOT NULL,
+       FORWARDED_NUMBER        VARCHAR2(80),
+       RECORD_TYPE             NUMBER(20,0)    NOT NULL,
+       DURATION                NUMBER(20,0)    NOT NULL,
+       TIME_STAMP              DATE                    NOT NULL,
+       EQUIPMENT_ID            VARCHAR2(40),
+       IMSI_NUMBER             VARCHAR2(40) ,
+       GEOGRAPHIC_POSITION     VARCHAR2(32),
+       CALL_TYPE               NUMBER(20,0)    NOT NULL,
+       SUBSCRIBER_ID           NUMBER(20,0)    NOT NULL,
+       VALUE                   NUMBER(16,6)    NOT NULL,
+       CDR_TYPE                NUMBER(20,0)    NOT NULL,
+       SERVICE_TYPE            NUMBER(20,0)    NOT NULL,
+       CDR_CATEGORY            NUMBER(20,0)    DEFAULT 1 NOT NULL,
+       IS_COMPLETE             NUMBER(20)      NOT NULL,
+       IS_ATTEMPTED            NUMBER(20)      NOT NULL,
+       SERVICE                 NUMBER(20,0) DEFAULT 2047,
+       PHONE_NUMBER            VARCHAR2(80),
+       ID 					NUMBER(20,0)    NOT NULL,
+       DAY_OF_YEAR                     NUMBER(20,0) DEFAULT 0,
+       HOUR_OF_DAY             NUMBER(20,0) DEFAULT 0,
+       OTHER_PARTY_COUNTRY_CODE     VARCHAR2(32),
+       VPMN                                         VARCHAR2(40)
+);
+
+CREATE TABLE NIK_IPDR_MERGE_TEMP 
+(
+	NETWORK_ID				NUMBER(20,0) ,
+	SUBSCRIBER_ID			NUMBER(20)  ,  
+	PHONE_NUMBER			VARCHAR2(40),
+	SESSION_START_DATE		DATE,	
+	SESSION_END_DATE		DATE,
+	TOTAL_DURATION			NUMBER(20,0),	
+	UPLOAD_DATA_VOLUME		NUMBER(20,0),
+	DOWNLOAD_DATA_VOLUME	NUMBER(20,0),
+	IPDR_TYPE				NUMBER(5),
+	VALUE					NUMBER(20,0),
+	USER_NAME				VARCHAR2(32),
+	SESSION_ID				VARCHAR2(32)
+);

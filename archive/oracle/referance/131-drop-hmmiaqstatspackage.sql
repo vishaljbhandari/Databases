@@ -1,0 +1,9 @@
+drop table analyst_picked_order_table_t;
+drop table current_day_picked_order_in_t;
+drop table picked_order_table_in_t;
+drop sequence hmm_alarm_stack_table_t_seq;
+drop table hmm_alarm_stack_table_t;
+drop sequence fraud_run_time_table_t_seq;
+drop table fraud_run_time_table_t;
+drop sequence fraud_run_time_out_table_t_seq;
+drop table fraud_run_time_out_table_t;

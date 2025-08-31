@@ -1,0 +1,1 @@
+select id, event_instance_id, name from (select rownum id, event_instance_id, name from (select unique id as event_instance_id, name from rules where parent_id != 0 order by event_instance_id)) order by id ;

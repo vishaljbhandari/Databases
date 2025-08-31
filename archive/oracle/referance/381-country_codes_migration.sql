@@ -1,0 +1,18 @@
+set serveroutput on
+set headding off echo off
+set line size 300
+set pages 0 long 999999
+spool Country_codes_migration.log
+
+    RENAME COUNTRY_CODES TO COUNTRY_CODES_CORE_BKUP;
+
+    INSERT INTO RATER_COUNTRY_CODES SELECT RATER_COUNTRY_CODES_SEQ.NEXTVAL, CODE, DESCRIPTION FROM COUNTRY_CODES_CORE_BKUP CB
+        WHERE NOT EXISTS (SELECT 1 from RATER_COUNTRY_CODES where cb.code = COUNTRY_CODE) ;
+
+    CREATE VIEW COUNTRY_CODES (CODE, DESCRIPTION) AS SELECT COUNTRY_CODE, DESCRIPTION FROM RATER_COUNTRY_CODES;
+
+    DBMS_OUTPUT.PUT_LINE('----------- Migration Done ---------');
+
+spool off;
+commit;
+quit;
